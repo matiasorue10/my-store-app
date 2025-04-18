@@ -1,5 +1,5 @@
 export interface LoginRequest {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -9,5 +9,5 @@ export interface LoginResponse {
 
 export interface AuthState {
   token: string | null;
-  user: LoginResponse | null;
+  username: LoginResponse | null;
 }
