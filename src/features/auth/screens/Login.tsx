@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React, { useEffect } from "react";
-import Card from "@/src/components/ui/Card";
+import Card from "@/src/components/ui/card/Card";
 import { useForm, Controller } from "react-hook-form";
 import { LoginRequest } from "../authTypes";
 import Input from "@/src/components/ui/Input";
