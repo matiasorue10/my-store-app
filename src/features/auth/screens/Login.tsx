@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Card from "@/src/components/ui/card/Card";
 import { useForm, Controller } from "react-hook-form";
 import { LoginRequest } from "../authTypes";
-import Input from "@/src/components/ui/Input";
+import Input from "@/src/components/ui/input/Input";
 import Button from "@/src/components/ui/button/Button";
 import { useLoginMutation } from "../authApi";
 import { setCredentials } from "../authSlice";
