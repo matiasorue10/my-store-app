@@ -95,7 +95,7 @@ export default function Login() {
           />
 
           {error && "data" in error && (
-            <Text style={{ color: "red" }}>
+            <Text className="text-red-500">
               Login failed: {(error as any).data}
             </Text>
           )}
