@@ -4,7 +4,7 @@ import Button from "./Button";
 describe("Button component", () => {
   it("renders the title correctly", () => {
     const { getByText } = render(<Button title="Click me" />);
-    expect(getByText("Click me")).toBeTruthy();
+    expect(getByText("Click me")).toBeVisible();
   });
 
   it("applies primary styles by default", () => {
