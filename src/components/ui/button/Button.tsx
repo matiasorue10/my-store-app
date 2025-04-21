@@ -26,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <TouchableOpacity
+      accessibilityRole="button"
       className={`${baseStyles} ${variants[variant]} ${className}`}
       {...props}
     >
