@@ -47,6 +47,7 @@ export default function Login() {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                autoCapitalize="none"
                 className="mb-8"
               />
             </View>
@@ -60,9 +61,6 @@ export default function Login() {
 
         <Controller
           control={control}
-          rules={{
-            maxLength: 100,
-          }}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
               placeholder="Password"
@@ -82,7 +80,7 @@ export default function Login() {
           disabled={isLoading}
         />
 
-        {error && <Text style={{ color: "red" }}>Error al iniciar sesión</Text>}
+        {error && <Text style={{ color: "red" }}>Login failed.</Text>}
       </Card>
     </View>
   );
