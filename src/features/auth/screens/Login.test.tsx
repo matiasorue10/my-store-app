@@ -39,7 +39,8 @@ describe("Login Component", () => {
     const { getByText } = render(<Login />);
     fireEvent.press(getByText("Submit"));
     await waitFor(() => {
-      expect(getByText("This is required.")).toBeVisible();
+      expect(getByText("The username is required.")).toBeVisible();
+      expect(getByText("The password is required.")).toBeVisible();
     });
   });
 
@@ -48,9 +49,11 @@ describe("Login Component", () => {
       token: "fake-token",
       user: { id: 1, username: "test" },
     };
-    mockLogin.mockReturnValue({
-      unwrap: jest.fn().mockResolvedValue(mockResponse),
-    });
+
+    (useLoginMutation as jest.Mock).mockReturnValue([
+      mockLogin.mockResolvedValue(mockResponse),
+      { isLoading: false, isSuccess: true, error: null, data: mockResponse },
+    ]);
 
     const { getByPlaceholderText, getByText } = render(<Login />);
     const usernameInput = getByPlaceholderText("Username");
@@ -71,11 +74,15 @@ describe("Login Component", () => {
   });
 
   it("should display an error message when login fails", async () => {
+    const mockResponse = { data: "Invalid username or password" };
     (useLoginMutation as jest.Mock).mockReturnValue([
-      jest.fn().mockReturnValue({
-        unwrap: jest.fn().mockRejectedValue(new Error("Login failed")),
-      }),
-      { isLoading: false, error: true },
+      mockLogin.mockResolvedValue(mockResponse),
+      {
+        isLoading: false,
+        isSuccess: false,
+        error: mockResponse,
+        data: null,
+      },
     ]);
 
     const { getByPlaceholderText, getByText } = render(<Login />);
@@ -84,7 +91,9 @@ describe("Login Component", () => {
     fireEvent.press(getByText("Submit"));
 
     await waitFor(() => {
-      expect(getByText("Login failed.")).toBeVisible();
+      expect(
+        getByText("Login failed: Invalid username or password"),
+      ).toBeVisible();
     });
   });
 });

@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "@/src/components/ui/Card";
 import { useForm, Controller } from "react-hook-form";
 import { LoginRequest } from "../authTypes";
@@ -20,67 +20,86 @@ export default function Login() {
       password: "",
     },
   });
-  const [login, { isLoading, error }] = useLoginMutation();
+  const [login, { isLoading, error, isSuccess, data }] = useLoginMutation();
   const dispatch = useAppDispatch();
-  const onSubmit = async (data: LoginRequest) => {
-    try {
-      const response = await login(data).unwrap();
-      dispatch(setCredentials(response));
-      console.log(response);
-    } catch (err) {
-      console.log(data);
-      console.error("Error logging in:", err);
-    }
+  const onSubmit = (data: LoginRequest) => {
+    login(data);
   };
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      dispatch(setCredentials(data));
+    }
+  }, [isSuccess, data, dispatch]);
+
   return (
     <View className="flex items-center justify-center flex-1">
-      <Card title="Login" className="h-72 w-72 flex gap-4">
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <View>
-              <Input
-                placeholder="Username"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                autoCapitalize="none"
-                className="mb-8"
-              />
-            </View>
-          )}
-          name="username"
-        />
-
-        {errors.username && (
-          <Text className="text-red-500">This is required.</Text>
-        )}
-
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder="Password"
-              secureTextEntry
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              className="mb-8"
+      <Card title="Login" className="h-auto w-72">
+        <View className="flex gap-4">
+          <View>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <View>
+                  <Input
+                    placeholder="Username"
+                    onBlur={onBlur}
+                    onChangeText={onChange}
+                    value={value}
+                    autoCapitalize="none"
+                    textContentType="username"
+                    autoComplete="username"
+                  />
+                </View>
+              )}
+              name="username"
             />
+
+            {errors.username && (
+              <Text className="text-red-500">The username is required.</Text>
+            )}
+          </View>
+          <View>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input
+                  autoCapitalize="none"
+                  placeholder="Password"
+                  secureTextEntry
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  textContentType="password"
+                  autoComplete="password"
+                />
+              )}
+              name="password"
+            />
+
+            {errors.password && (
+              <Text className="text-red-500">The password is required.</Text>
+            )}
+          </View>
+
+          <Button
+            title="Submit"
+            onPress={handleSubmit(onSubmit)}
+            disabled={isLoading}
+          />
+
+          {error && "data" in error && (
+            <Text style={{ color: "red" }}>
+              Login failed: {(error as any).data}
+            </Text>
           )}
-          name="password"
-        />
-
-        <Button
-          title="Submit"
-          onPress={handleSubmit(onSubmit)}
-          disabled={isLoading}
-        />
-
-        {error && <Text style={{ color: "red" }}>Login failed.</Text>}
+        </View>
       </Card>
     </View>
   );
