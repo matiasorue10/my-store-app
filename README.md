@@ -1,50 +1,133 @@
-# Welcome to your Expo app 👋
+# 🧑‍💻 My store App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile app built with Expo, designed to showcase my skills in mobile development. This project includes user authentication, product listing, and detailed product views — demonstrating clean code practices, and modern tooling.
 
-## Get started
+## ✨ Features
 
-1. Install dependencies
+- 🔐 Login: Secure and user-friendly authentication flow.
 
-   ```bash
-   npm install
-   ```
+- 🛍️ Product List: Fetch and display a list of products with responsive design.
 
-2. Start the app
+- 📦 Product Details: Detailed view for individual products.
 
-   ```bash
-    npx expo start
-   ```
+- ⚙️ State Management: Powered by Redux Toolkit for scalable global state.
 
-In the output, you'll find options to open the app in a
+- 🧭 Navigation: Smooth navigation using React Navigation.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- 🎨 Styling: Fast and consistent UI using NativeWind (Tailwind CSS for React Native).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- ✅ Testing: Unit and component testing with Jest and React Native Testing Library.
 
-## Get a fresh project
+- 🧼 Code Quality:
 
-When you're ready, run:
+  - ESLint + Prettier for linting and formatting.
+
+  - Commit Linting with Conventional Commits.
+
+  - Husky for Git hooks (pre-commit & commit-msg).
+
+## 🛠️ Tech Stack
+
+- [React Native with Expo](https://reactnative.dev/docs/environment-setup#start-a-new-react-native-project-with-expo)
+
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+
+- [React Navigation](https://reactnavigation.org/)
+
+- [NativeWind](https://www.nativewind.dev/)
+
+- [Jest](https://jestjs.io/docs/tutorial-react-native) & [React Native Testing Library](https://testing-library.com/docs/react-native-testing-library/intro/)
+
+- [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Husky](https://typicode.github.io/husky/), [Commitlint](https://commitlint.js.org/).
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+
+- Expo CLI (npm install -g expo-cli)
+
+- Git
+
+### Installation
 
 ```bash
-npm run reset-project
+git clone https://github.com/matiasorue10/my-store-app.git
+cd my-store-app
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Running the App
 
-## Learn more
+```bash
+npm run start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Scan the QR code using your Expo Go app or run it on a simulator.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🧪 Running Tests
 
-## Join the community
+```bash
+npm test
+```
 
-Join our community of developers creating universal apps.
+## 🧹 Linting & Formatting
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Lint
+
+```bash
+npm run lint
+```
+
+### Format
+
+```bash
+npm run prettier
+```
+
+## ✅ Commit Standards
+
+This project uses Conventional Commits. Make sure your commit messages follow the proper format (e.g. feat: add login screen, fix: resolve crash on load).
+
+### Husky Hooks
+
+- `pre-commit`: runs linting and formatting checks
+
+- `commit-msg`: validates commit messages
+
+- `pre-push`: run all tests before push
+
+## 📁 Folder Structure
+
+```bash
+/.husky
+/.github
+/assets
+/src
+   /api --> // Base API Config
+   /app --> // Global App configuration, such as the redux store, navigation and hooks
+   /components --> // Reutilizable components
+   /features
+      /foo-feature --> Includes, the screens, services types and test. Also you can find sub-features here.
+```
+
+## 🚀 Purpose
+
+This project serves as a personal portfolio piece to demonstrate:
+
+- Scalable app structure
+
+- Clean code and architecture
+
+- Integration of modern libraries and tools
+
+- Commitment to testing and developer workflow
+
+## 📬 Contact
+
+Feel free to reach out for feedback or collaboration!
+
+**Matias Orue C.**
+
+[LinkedIn](https://www.linkedin.com/in/matias-orue10/) | [Email](mailto:matiasorue@hotmail.com)
