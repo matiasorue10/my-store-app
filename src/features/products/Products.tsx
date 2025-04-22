@@ -11,10 +11,16 @@ const Products = () => {
     <View>
       <View className="p-1">
         {error ? (
-          <Text>Oh no, there was an error</Text>
+          <Text className="text-red-500">
+            Oh no, there was an error. Please retry
+          </Text>
         ) : isLoading ? (
           <View className="flex h-screen items-center justify-center">
-            <Progress.Circle size={80} indeterminate={true} />
+            <Progress.Circle
+              size={80}
+              indeterminate={true}
+              testID="progress-indicator"
+            />
           </View>
         ) : data ? (
           <>
