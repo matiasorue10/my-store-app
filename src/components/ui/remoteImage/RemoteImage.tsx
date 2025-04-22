@@ -12,12 +12,18 @@ export default function RemoteImage({ uri }: RemoteImageProps) {
   return (
     <View className="items-center justify-center w-48 h-48 relative">
       {loading && (
-        <Progress.Circle size={40} indeterminate={true} className="absolute" />
+        <Progress.Circle
+          size={40}
+          indeterminate={true}
+          className="absolute"
+          testID="progress-circle"
+        />
       )}
       <Image
         source={{ uri }}
         onLoadEnd={() => setLoading(false)}
         className="h-48 w-48"
+        testID="image"
       />
     </View>
   );
