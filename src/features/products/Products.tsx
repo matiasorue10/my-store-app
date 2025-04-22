@@ -2,6 +2,7 @@ import { View, Text, FlatList, Image } from "react-native";
 import { useGetAllProductsQuery } from "./services/productsApi";
 import Card from "@/src/components/ui/card/Card";
 import * as Progress from "react-native-progress";
+import RemoteImage from "@/src/components/ui/remoteImage/RemoteImage";
 
 const Products = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -24,12 +25,7 @@ const Products = () => {
                 <View className="p-4">
                   <Card title={item.title}>
                     <View className="flex flex-col justify-center items-center gap-2">
-                      <Image
-                        className="h-48 w-48"
-                        source={{
-                          uri: item.image,
-                        }}
-                      />
+                      <RemoteImage uri={item.image} />
                       <Text>Category: {item.category}</Text>
                       <Text className="font-bold">Price: {item.price}$</Text>
                     </View>
