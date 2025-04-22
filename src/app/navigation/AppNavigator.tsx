@@ -3,10 +3,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useIsAuthenticated } from "../hooks";
 import Login from "@/src/features/auth/screens/Login";
 import Products from "@/src/features/products/Products";
+import ProductDetails from "@/src/features/products/product-details/ProductDetails";
+import { RootStackParamList } from "./types/appNavigatorTypes";
 
 const AppNavigator = () => {
   const isAuthenticated = useIsAuthenticated();
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <NavigationContainer>
@@ -14,6 +16,11 @@ const AppNavigator = () => {
         {isAuthenticated ? (
           <>
             <Stack.Screen name="Products" component={Products} />
+            <Stack.Screen
+              name="ProductDetails"
+              component={ProductDetails}
+              options={{ title: "Product Details" }}
+            />
           </>
         ) : (
           <>
