@@ -10,6 +10,7 @@ jest.mock("../authApi", () => ({
 
 jest.mock("../authSlice", () => ({
   setCredentials: jest.fn(),
+  setCredentialsWithStorage: jest.fn(),
 }));
 
 jest.mock("@/src/app/hooks", () => ({
@@ -92,7 +93,7 @@ describe("Login Component", () => {
 
     await waitFor(() => {
       expect(
-        getByText("Login failed: Invalid username or password"),
+        getByText("Login failed: Invalid username or password")
       ).toBeVisible();
     });
   });

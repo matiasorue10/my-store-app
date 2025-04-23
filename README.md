@@ -12,6 +12,8 @@ A React Native mobile app built with Expo, designed to showcase my skills in mob
 
 - ⚙️ State Management: Powered by Redux Toolkit for scalable global state.
 
+- 💾 AsyncStorage: Asynchronous, unencrypted, persistent key‑value storage for React Native apps.
+
 - 🧭 Navigation: Smooth navigation using React Navigation.
 
 - 🎨 Styling: Fast and consistent UI using NativeWind (Tailwind CSS for React Native).
@@ -31,6 +33,8 @@ A React Native mobile app built with Expo, designed to showcase my skills in mob
 - [React Native with Expo](https://reactnative.dev/docs/environment-setup#start-a-new-react-native-project-with-expo)
 
 - [Redux Toolkit](https://redux-toolkit.js.org/)
+
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/)
 
 - [React Navigation](https://reactnavigation.org/)
 
