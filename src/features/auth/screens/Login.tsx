@@ -6,7 +6,7 @@ import { LoginRequest } from "../authTypes";
 import Input from "@/src/components/ui/input/Input";
 import Button from "@/src/components/ui/button/Button";
 import { useLoginMutation } from "../authApi";
-import { setCredentials } from "../authSlice";
+import { setCredentials, setCredentialsWithStorage } from "../authSlice";
 import { useAppDispatch } from "@/src/app/hooks";
 
 export default function Login() {
@@ -22,13 +22,13 @@ export default function Login() {
   });
   const [login, { isLoading, error, isSuccess, data }] = useLoginMutation();
   const dispatch = useAppDispatch();
-  const onSubmit = (data: LoginRequest) => {
-    login(data);
+  const onSubmit = async (userData: LoginRequest) => {
+    login(userData);
   };
 
   useEffect(() => {
     if (isSuccess && data) {
-      dispatch(setCredentials(data));
+      dispatch(setCredentialsWithStorage(data));
     }
   }, [isSuccess, data, dispatch]);
 
